@@ -1,0 +1,106 @@
+{# templates/lucky/number.html.twig #}
+<form action="/jobsearch" method="post">
+<input type="text" name="job" placeholder="nom d'un job"/>
+<input type="text" name="place" placeholder="nom d'un lieu, d'une ville"/>
+</form>
+
+
+ <h1>Your lucky number is {{ number }}</h1>
+<img src="" id="placephoto" style="height:200px;width:100%;display:none;" />
+<input type="file" id="inputplacephoto" hidden onchange="previewSecondphoto()" />ajouter une image d'un endroit ici<br>
+<table class="cvjobtable" cellspacing="20px">
+    <tr>
+      <td>
+<input type="file" id="inputcvphoto" hidden onchange="previewFile()">changer l'image ici<br>
+
+<img id="cvphoto" width="50%" height="200" alt="Image preview" src="/hello.png" /></td>
+      <td><h1 class="namecv">Anne Honyme</h1>
+      <p>
+        <em><span id="firstjobcv">Fullstack Web Developer</span> | Software Developer | Content Writer</em></a>
+      </p>
+      <p>
+        I am a self-motivated and passionate <span id="firstjobcv1">Fullstack Web Developer</span> with high level experience in HTML5, CSS3, Bootsrap4, PHP and Javascript.
+      </p>
+    </td>
+    </tr>
+  </table>
+
+  <hr>
+  <h3>Education</h3>
+  <ul id="alleducation">
+
+  </ul>
+<hr>
+  <h3>Work Experience</h3>
+  <table class="cvjobtable" cellspacing="10px">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Work</th>
+      </tr>
+    </thead>
+    <tbody id="allexperiences">
+      <tr>
+        <td>Nov2022-Till Date</td>
+        <td>Operations Team Member (Adecco)</td>
+      </tr>
+      <tr>
+        <td>Jan 2020</td>
+        <td>Professional Freelancern (Self Employed)</td>
+      </tr>
+      <tr>
+        <td>Apr 2021-May 2022</td>
+        <td>Instructor (National Youth Service Corp)</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>mes competences techniques</h3>
+  <table class="cvjobtable" cellspacing="10px">
+    <thead>
+      <tr>
+        <th>my skill name</th>
+        <th>content of my skill</th>
+      </tr>
+    </thead>
+    <tbody id="alltechnicalskill">
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h3>Licenses & Certification<br><em><strong>Pirple</strong></em></h3>
+  <ul>
+    <li>HTML5 AND CSS3</li>
+    <li>Issued Jul 2022. No Expiration Date</li>
+    <li>Credential ID sdflhjdqfkuh897nj</li>
+    <li><a href="https://www.pirple.com/certificates/sdflhjdqfkuh897nj">Show Credential</a></li>
+  </ul>
+
+<hr>
+
+  <h3>Skills</h3>
+      <table class="cvjobtable" cellspacing="10px">
+          <tr>
+            <td>Web Developer</td>
+            <td>HTML | CSS | Bootstrap |Javascript | PHP | Vscode | Atom | Jsbin</td>
+          </tr>
+          <tr>
+            <td>Content Writing</td>
+            <td>Web copy | Academic writing | SEO Writing</td>
+          </tr>
+          <tr>
+            <td>Other Skills</td>
+            <td>Microsoft word | Microsoft Excel | Powerpoint Presentation | Outlook</td>
+            <td id="otherskillslist"></td>
+          </tr>
+      </table>
+
+  <hr />
+  <H3>Contact Me</H3>
+  <ul>
+    <li><a href="">Twitter</a></li>
+    <li><a href="annehonyme.medium.com">Medium</a></li>
+    <li><a href="www.linkedin.com/in/annehonyme">Linkedin</a></li>
+    <li><a href="anne.honyme20@gmail.com">Gmail</a></li>
+  </ul>
+
