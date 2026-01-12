@@ -21,6 +21,7 @@ dans .env on peut modifier base donee
 - template1=# \q
 
 - DATABASE_URL=postgres://{user}:{password}@{hostname}:{port}/{database-name}
+- faire : composer install
 # turbo-it-job
 ````
 cd my_project/
