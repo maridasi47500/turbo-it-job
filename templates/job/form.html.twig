@@ -1,0 +1,32 @@
+
+
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+<h1>ajouter un job present/passé</h1>
+<form method="post">
+    <div>
+
+<input type="hidden" value="{{ app.user.id }}" name="user_id" />
+
+</div>
+    <div>
+<label for="nom">nom du job</label>
+<input type="text" id="nom"  name="nom" />
+
+</div>
+    <div>
+<label for="lieu">lieu du job (entreprise)</label>
+<input type="text" id="lieu"  name="lieu" />
+
+</div>
+    <div>
+<label for="dates">dates (debut-fin) du job</label>
+<input type="text" id="dates"  name="dates" />
+
+</div>
+<input type="submit" id="envoyer"  name="send" value="ajouter un job" />
+</form>
+{% else %}
+<p>
+tu n'es pas connécté.e <a href="/">retour à l'accueil</a>
+</p>
+{% endif %}
