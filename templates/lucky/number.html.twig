@@ -1,4 +1,13 @@
 {# templates/lucky/number.html.twig #}
+
+
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ logout_path() }}">Logout</a>
+            </div>
+<a href="/logout">se déconnecter</a>
+
+
 <form action="/jobsearch" method="post">
 <input type="text" name="job" placeholder="nom d'un job"/>
 <input type="text" name="place" placeholder="nom d'un lieu, d'une ville"/>
@@ -101,6 +110,13 @@
     <li><a href="">Twitter</a></li>
     <li><a href="annehonyme.medium.com">Medium</a></li>
     <li><a href="www.linkedin.com/in/annehonyme">Linkedin</a></li>
-    <li><a href="anne.honyme20@gmail.com">Gmail</a></li>
+    <li><a href="{{ app.user.userIdentifier }}">Email</a></li>
   </ul>
+
+{% else %}
+<p>bienvenue à ma recherche d'emploi</p>
+<p>si tu as des compétences en langages de programmation , inscris toi pour faire partie du reseau</p>
+<a href="/login">Log in</a>
+<a href="/register">s'inscrire</a>
+        {% endif %}
 
