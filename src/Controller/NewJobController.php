@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManagerInterface;
+
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Job;
@@ -25,7 +27,7 @@ class NewJobController extends AbstractController
             $job = new Job();
             $job->setName($request->query->get('name'))
 
-            $entityManager->persist($user);
+            $entityManager->persist($job);
             $entityManager->flush();
 
 
