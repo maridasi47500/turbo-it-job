@@ -20,6 +20,7 @@ class JobController extends AbstractController
         $email = $this->getUser()->getEmail();
         $users = $connection->fetchAllAssociative('SELECT email FROM users where email <> \'' . strval($email) . '\'  ORDER BY RANDOM() LIMIT 4;');
         $jobs = $connection->fetchAllAssociative('SELECT * FROM job where user_id = ' . strval($user_id));
+        $joboffers = $connection->fetchAllAssociative('SELECT id, company, place, name, SUBSTRING(description FROM 1 FOR 100) || \'...\' as description FROM job_offer ORDER BY RANDOM() LIMIT 4;');
         }else{
         // Create a simple array.
         $myjob = ['name' => "operation team member", 'place' => 'hey', 'company' => 'Adecco', 'dates' => 'jun 2022 - today'];
@@ -31,6 +32,7 @@ class JobController extends AbstractController
 
 
         return $this->render('lucky/number.html.twig', [
+            'joboffers' => $joboffers,
             'rayons' => $rayons,
             'jobs' => $jobs,
             'users' => $users,

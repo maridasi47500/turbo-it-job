@@ -29,7 +29,6 @@ class JobOfferController extends AbstractController
             $job = new JobOffer();
             $job->setName($request->getPayload()->get('nom'));
             $job->setCompany($request->getPayload()->get('company'));
-            $job->setUserId($request->getPayload()->get('user_id'));
             $job->setPlace($request->getPayload()->get('lieu'));
             $job->setDates($request->getPayload()->get('dates'));
             $job->setLat($request->getPayload()->get('lat'));

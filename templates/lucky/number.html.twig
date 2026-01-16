@@ -25,13 +25,36 @@
 </div>
 
 
+<h2>offres d'emploi qui pourraient vous intéresser</h2>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for joboffer in joboffers %}
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{joboffer.name}} </h5>
+        <p class="card-text">{{joboffer.description}}</p>
+        <p class="card-text">{{joboffer.place}}</p>
+        <p class="card-text">{{joboffer.company}}</p>
+      </div>
+    </div>
+  </div>
+    {% endfor %}
+</div>
+
  <h1>Your lucky number is {{ number }}</h1>
 <h2>vous connaissez peut-être:</h2>
-<ul class="connaitpeutetre">
+<div class="connaitpeutetre row row-cols-1 row-cols-md-2 g-4">
     {% for user in users %}
-        <li>{{ user.email|e }}</li>
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">user no{{user.id}} </h5>
+        <p class="card-text">{{user.email}}</p>
+      </div>
+    </div>
+  </div>
     {% endfor %}
-</ul>
+</div>
 <img src="" id="placephoto" style="height:200px;width:100%;display:none;" />
 <input type="file" id="inputplacephoto" hidden onchange="previewSecondphoto()" />ajouter une image d'un endroit ici<br>
 <table class="cvjobtable" cellspacing="20px">
@@ -145,5 +168,21 @@
 <p>si tu as des compétences en langages de programmation , inscris toi pour faire partie du reseau</p>
 <a href="/login">Log in</a>
 <a href="/register">s'inscrire</a>
+<h2>offres d'emploi</h2>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for joboffer in joboffers %}
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{joboffer.name}} </h5>
+        <p class="card-text">{{joboffer.description}}</p>
+        <p class="card-text">{{joboffer.place}}</p>
+        <p class="card-text">{{joboffer.company}}</p>
+      </div>
+    </div>
+  </div>
+    {% endfor %}
+</div>
         {% endif %}
+
 
