@@ -1,0 +1,88 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+<h1>ajouter un job present/passé</h1>
+<form method="post">
+    <div>
+
+<input type="hidden" value="{{ app.user.id }}" name="user_id" />
+
+</div>
+    <div>
+<label for="nom">nom du job</label>
+<input type="text" id="nom"  name="nom" />
+
+</div>
+    <div>
+<label for="company">entreprise du job (entreprise)</label>
+<input type="text" id="company"  name="company" />
+
+</div>
+    <div>
+<label for="lieu">lieu du job (adresse)</label>
+<input type="text" id="lieu"  name="monlieu" />
+<button type="button" id="chercherlieu" >chercher l'adresse de ce lieu</button>
+<p><span id="fulladdress"></span></p>
+
+</div>
+    <div>
+<label for="dates">dates (debut-fin) du job</label>
+<input type="text" id="dates"  name="dates" />
+
+</div>
+    <div>
+<label for="lat">latitude</label>
+<input type="text" id="lat"  name="lat" />
+
+</div>
+    <div>
+<label for="lon">longitude</label>
+<input type="text" id="lon"  name="lon" />
+
+</div>
+<input type="submit" id="envoyer"  name="send" value="ajouter un job" />
+</form>
+
+
+<div id="imap" >
+            <div id="map" onclick="onMapClick(event);">
+                            <!-- Ici s'affichera la carte -->
+                                </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+<script src="/js/mymap.js" type="text/javascript"></script>
+
+<script>
+//function cherchercelieu(){
+//  $.ajax({
+//      url: '/localisation?address=' + lieu.value,
+//      type: 'GET',
+//      dataType: 'json',
+//      //async: false,
+//      success: (data) => {
+//        
+//        if (data && data[0]){
+//           var myplace=data[0];
+//           var mylat=myplace.lat;
+//           var mylon=myplace.lon;
+//           lat.value=mylat;
+//           lon.value=mylon;
+//           var thismap=L.map('map');
+//           thismap.panTo(new L.LatLng(parseFloat(mylat), parseFloat(mylon)));
+//        }
+//      }
+//  });
+//return false;
+//}
+</script>
+
+{% else %}
+<p>
+tu n'es pas connécté.e <a href="/">retour à l'accueil</a>
+</p>
+{% endif %}
+{% endblock %}

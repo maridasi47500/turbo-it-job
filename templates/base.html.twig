@@ -9,15 +9,13 @@
 
         {% block javascripts %}
         {% endblock %}
+        <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="/css/mymap.css">
+
     </head>
     <body>
 
-        {% block body %}
-<form action="/jobsearch" method="post">
-<input type="text" name="job" placeholder="nom d'un job"/>
-<input type="text" name="place" placeholder="nom d'un lieu, d'une ville"/>
-</form>
-
-{% endblock %}
+{% block body %}{% endblock %}
     </body>
 </html>
