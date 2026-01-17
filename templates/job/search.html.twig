@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div>
+<h6>cherche 1 job</h6>
+<form action="/chercheroffredemploi" method="get">
+<input type="text" value="{{mysearch}}" name="job" placeholder="nom d'un job" style="min-width:200px;height:50px;"/>
+<input type="text" name="place" placeholder="nom d'un lieu, d'une ville" style="min-width:200px;height:50px;"/>
+<select name="rayon" style="min-width:200px;height:50px;">
+    {% for rayon in rayons %}
+<option value="{{rayon}}">{{rayon}} km</option>
+    {% endfor %}
+</select>
+<input type="submit" name="chercher" value="chercher" style="min-width:200px;height:50px;"/>
+</form>
+</div>
+
+{% if jobs|length > 0 %}
+<h2>{{jobs|length}} resultat{% if jobs|length > 1%}s{%endif%} de la recherche "{{mysearch}}"</h2>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for joboffer in jobs %}
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{joboffer.name}} </h5>
+        <p class="jobdescription">{{joboffer.description}}</p>
+        <p class="card-text">{{joboffer.place}}</p>
+        <p class="card-text">{{joboffer.company}}</p>
+      </div>
+    </div>
+  </div>
+    {% endfor %}
+    {% else %}
+<p>aucun resultat trouvé pour '{{mysearch}}'</p>
+    {% endif %}
+</div>
+
+<p>
+<a href="/">retour à l'accueil</a>
+</p>
+{% endblock %}

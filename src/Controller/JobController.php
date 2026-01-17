@@ -25,6 +25,7 @@ class JobController extends AbstractController
         // Create a simple array.
         $myjob = ['name' => "operation team member", 'place' => 'hey', 'company' => 'Adecco', 'dates' => 'jun 2022 - today'];
         $myuser = ['email' => 'anonymous user'];
+        $joboffers = array();
         $jobs = array($myjob);
         $users = array($myuser);
         }
