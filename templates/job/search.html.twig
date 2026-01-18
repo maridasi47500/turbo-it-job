@@ -5,10 +5,10 @@
 <h6>cherche 1 job</h6>
 <form action="/chercheroffredemploi" method="get">
 <input type="text" value="{{mysearch}}" name="job" placeholder="nom d'un job" style="min-width:200px;height:50px;"/>
-<input type="text" name="place" placeholder="nom d'un lieu, d'une ville" style="min-width:200px;height:50px;"/>
+<input type="text" name="place" value="{{address}}" placeholder="nom d'un lieu, d'une ville" style="min-width:200px;height:50px;"/>
 <select name="rayon" style="min-width:200px;height:50px;">
-    {% for rayon in rayons %}
-<option value="{{rayon}}">{{rayon}} km</option>
+    {% for r in rayons %}
+<option {% if r == rayon %}selected{% endif %} value="{{r}}">{{r}} km</option>
     {% endfor %}
 </select>
 <input type="submit" name="chercher" value="chercher" style="min-width:200px;height:50px;"/>

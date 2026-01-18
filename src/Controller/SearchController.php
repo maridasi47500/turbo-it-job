@@ -79,20 +79,26 @@ class SearchController extends AbstractController
 
 
 
-        if (is_string($listplaces)){
+
+        if (is_string($listplaces) ){
+
         $jobs = $connection->fetchAllAssociative('SELECT name, lat, lon, description, place, company, dates FROM job_offer where lower(name) like \'' . $search . '\' or lower(company) like \'' . $search . '\' or lower(place) like \'' . $search . '\' or lower(description) like \'' . $search . '\'');
         }else{
+
         $firstplace=$listplaces[0];
+        //echo $firstplace["display_name"];
         $lat=$firstplace["lat"];
         $lon=$firstplace["lon"];
-        //$jobs = $connection->fetchAllAssociative('SELECT name,( 3959 * acos( cos( radians(' . $lat . ') ) * cos( radians( lat ) ) * cos( radians( lon ) - radians(' . $lon . ') ) + sin( radians(' . $lat . ') ) * sin( radians( lat ) ) ) ) AS distance, lat, lon, description, place, company, dates FROM job_offer where lower(name) like \'' . $search . '\' or lower(company) like \'' . $search . '\' or lower(place) like \'' . $search . '\' or lower(description) like \'' . $search . '\' and distance > ' . $rayon);
-        $jobs = $connection->fetchAllAssociative('SELECT name, lat, lon, description, place, company, dates FROM job_offer where lower(name) like \'' . $search . '\' or lower(company) like \'' . $search . '\' or lower(place) like \'' . $search . '\' or lower(description) like \'' . $search . '\'');
+        $jobs = $connection->fetchAllAssociative('SELECT name,( 3959 * acos( cos( radians(cast(' . $lat . ' as float)) ) * cos( radians(cast(lat as float)) ) * cos( radians(cast(lon as float)) - radians(cast(' . $lon . ' as float)) ) + sin( radians(cast(' . $lat . ' as float)) ) * sin( radians(cast(lat as float)) ) ) ) AS distance, lat, lon, description, place, company, dates FROM job_offer where (lower(name) like \'' . $search . '\' or lower(company) like \'' . $search . '\' or lower(place) like \'' . $search . '\' or lower(description) like \'' . $search . '\') and ( 3959 * acos( cos( radians(cast(' . $lat . ' as float)) ) * cos( radians(cast(lat as float)) ) * cos( radians(cast(lon as float)) - radians(cast(' . $lon . ' as float)) ) + sin( radians(cast(' . $lat . ' as float)) ) * sin( radians(cast(lat as float)) ) ) ) < ' . $rayon);
+        //$jobs = $connection->fetchAllAssociative('SELECT name, lat, lon, description, place, company, dates FROM job_offer where lower(name) like \'' . $search . '\' or lower(company) like \'' . $search . '\' or lower(place) like \'' . $search . '\' or lower(description) like \'' . $search . '\'');
         }
 
 
         return $this->render('job/search.html.twig', [
             'mysearch' => $mysearch,
             'jobs' => $jobs,
+            'address' => $address,
+            'rayon' => intval($rayon),
             'rayons' => $rayons,
             'number' => $number
         ]);
